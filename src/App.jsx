@@ -1,11 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect, } from 'react'
 import './App.css'
-
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [count, setCount] = useState(0)  
+  
+  const Accordion = ({ question, answer }) => {
+    const [isActive, setIsActive] = useState(false);
+  
+    const handleToggle = () => {
+      setIsActive(!isActive);
+    };
+  
+    return (
+      <div className={`dd ${isActive ? 'active' : ''}`}>
+        <div className="dd-toggle" onClick={handleToggle}>
+          <div className="dd-col">
+            <h5 className="h5 reg fq">{question}</h5>
+          </div>
+          <div className="dd-cross">
+            <img
+              src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f994a3b83f2dd634882bad_plus.svg"
+              loading="lazy"
+              alt=""
+              className={`plus ${isActive ? 'hidden' : ''}`}
+            />
+            <img
+              src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f994b018d02fd97e75e16f_minus.svg"
+              loading="lazy"
+              alt=""
+              className={`minus ${isActive ? '' : 'hidden'}`}
+            />
+          </div>
+        </div>
+        <div className="dd-cont">
+          <div className="dd-text-block">
+            <div className="t28 _3">{answer}</div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+  
   return (
 <>
   <div className="w-embed">
@@ -40,18 +77,18 @@ function App() {
             <nav role="navigation" className="nav-menu w-nav-menu">
               <div className="navlinks-row">
                 <a
-                  href="index.html#about"
+                  href="#about"
                   className="nav-link m_line w-nav-link"
                 >
                   About
                 </a>
                 <a
-                  href="index.html#shaker"
+                  href="#shaker"
                   className="nav-link m_line w-nav-link"
                 >
                   Borrow
                 </a>
-                <a href="index.html#maker" className="nav-link w-nav-link">
+                <a href="#maker" className="nav-link w-nav-link">
                   Lend
                 </a>
               </div>
@@ -59,7 +96,7 @@ function App() {
             </nav>
           </div>
           <div className="nav-col _3">
-            <a href="index.html#join" className="button w-button">
+            <a href="#join" className="button w-button">
               Join now
             </a>
           </div>
@@ -117,7 +154,7 @@ function App() {
           <div className="text1">
             A community platform for Makers to lend and Shakers to borrow
           </div>
-          <a href="index.html#join" className="border-button w-button">
+          <a href="#join" className="border-button w-button">
             Join now
           </a>
         </div>
@@ -241,7 +278,7 @@ function App() {
                   <div className="slide-btn-col">
                     <a
                       data-w-id="6ac94c92-90e5-2cca-9644-c2907d696d81"
-                      href="index.html#"
+                      href="#"
                       className="button sl w-button"
                     >
                       Shaker
@@ -250,7 +287,7 @@ function App() {
                   <div className="slide-btn-col">
                     <a
                       data-w-id="980548b0-f248-b543-d904-142a49b75d28"
-                      href="index.html#"
+                      href="#"
                       className="button sl w-button"
                     >
                       Maker
@@ -351,7 +388,7 @@ function App() {
                     </div>
                     <a
                       data-w-id="7ce6b1ef-299f-03b7-eff0-bbf5610143d5"
-                      href="index.html#"
+                      href="#"
                       className="arrow-back w-inline-block"
                     >
                       <div className="svg w-embed">
@@ -400,7 +437,7 @@ function App() {
                     </div>
                     <a
                       data-w-id="67b87447-d1c2-4c8a-f5b4-e8d2e1f50be7"
-                      href="index.html#"
+                      href="#"
                       className="arrow-back w-inline-block"
                     >
                       <div className="svg w-embed">
@@ -532,7 +569,7 @@ function App() {
                     </div>
                     <a
                       data-w-id="08f0413b-be55-3571-f029-eff22fbfa53d"
-                      href="index.html#"
+                      href="#"
                       className="arrow-back w-inline-block"
                     >
                       <div className="svg w-embed">
@@ -581,7 +618,7 @@ function App() {
                     </div>
                     <a
                       data-w-id="08f0413b-be55-3571-f029-eff22fbfa547"
-                      href="index.html#"
+                      href="#"
                       className="arrow-back w-inline-block"
                     >
                       <div className="svg w-embed">
@@ -674,12 +711,13 @@ function App() {
       </div>
     </div>
   </div>
+  {/* <StickyBlock/> */}
   <div
     data-w-id="121f122b-1e7c-2e4d-776d-49f98bcfe920"
     className="sticky-track"
   >
     <div className="sticky-block">
-      <div className="sticky-row">
+      <div className="sticky-row" >
         <div className="sticky-col _1">
           <div className="subtitle">Work in progress</div>
           <h5 className="h5 reg">
@@ -689,7 +727,7 @@ function App() {
           </h5>
         </div>
         <div className="st-row">
-          <div className="sticky-col">
+          <div className="sticky-col sticky-col1">
             <div className="st-block">
               <div className="rel1">
                 <div className="st-title">Initiation</div>
@@ -704,7 +742,7 @@ function App() {
             </div>
             <div className="st-date">Q3 2022</div>
           </div>
-          <div className="sticky-col _2">
+          <div className="sticky-col _2 sticky-col2">
             <div className="st-block _2">
               <div className="rel1">
                 <div className="st-title">Activation</div>
@@ -722,7 +760,7 @@ function App() {
             </div>
             <div className="st-date _2">Q4 2022</div>
           </div>
-          <div className="sticky-col _3">
+          <div className="sticky-col _3 sticky-col3">
             <div className="st-block _2">
               <div className="rel1">
                 <div className="st-title">Exploration</div>
@@ -740,7 +778,7 @@ function App() {
             </div>
             <div className="st-date _3">HI 2023</div>
           </div>
-          <div className="sticky-col">
+          <div className="sticky-col sticky-col4">
             <div className="st-block _3">
               <div className="rel1">
                 <div className="st-title">Pioneering</div>
@@ -853,185 +891,38 @@ function App() {
           <div className="faq-block">
             <div className="faq-cont">
               <div className="h1-text _2">FAQ</div>
-              <div id="accordion" className="accordion">
-                <div className="dd active">
-                  <div className="dd-toggle">
-                    <div className="dd-col">
-                      <h5 className="h5 reg fq">
-                        What happens if I don’t repay on time?
-                      </h5>
-                    </div>
-                    <div className="dd-cross">
-                      <img
-                        src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f994a3b83f2dd634882bad_plus.svg"
-                        loading="lazy"
-                        alt=""
-                        className="plus"
-                      />
-                      <img
-                        src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f994b018d02fd97e75e16f_minus.svg"
-                        loading="lazy"
-                        alt=""
-                        className="minus"
-                      />
-                    </div>
-                  </div>
-                  <div className="dd-cont">
-                    <div className="dd-text-block">
-                      <div className="t28 _3">
-                        Stuff happens! We want you to repay the loan on time,
-                        but if you can not or do not want to – we will not take
-                        your NFT immediately.
-                        <br />
-                        <br />
-                        We will extend your loan by an agreed time frame and we
-                        will return to you any surplus over what you owe and
-                        what the NFT sells for in auction (if that becomes
-                        necessary).
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="dd">
-                  <div className="dd-toggle">
-                    <div className="dd-col">
-                      <h5 className="h5 reg fq">
-                        I’m interested in being a Maker, what is that exactly?
-                      </h5>
-                    </div>
-                    <div className="dd-cross">
-                      <img
-                        src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f994a3b83f2dd634882bad_plus.svg"
-                        loading="lazy"
-                        alt=""
-                        className="plus"
-                      />
-                      <img
-                        src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f994b018d02fd97e75e16f_minus.svg"
-                        loading="lazy"
-                        alt=""
-                        className="minus"
-                      />
-                    </div>
-                  </div>
-                  <div className="dd-cont">
-                    <div className="dd-text-block">
-                      <div className="t28 _3">
-                        A Maker is a liquidity provider. A lender. We create
-                        vaults for specific deals with clear terms. If you want
-                        to provide liquidity alongside us then register below
-                        and we will be in touch.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="dd">
-                  <div className="dd-toggle">
-                    <div className="dd-col">
-                      <h5 className="h5 reg fq">
-                        How and when do MakerShaker earn?
-                      </h5>
-                    </div>
-                    <div className="dd-cross">
-                      <img
-                        src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f994a3b83f2dd634882bad_plus.svg"
-                        loading="lazy"
-                        alt=""
-                        className="plus"
-                      />
-                      <img
-                        src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f994b018d02fd97e75e16f_minus.svg"
-                        loading="lazy"
-                        alt=""
-                        className="minus"
-                      />
-                    </div>
-                  </div>
-                  <div className="dd-cont">
-                    <div className="dd-text-block">
-                      <div className="t28 _3">
-                        We are lenders at heart. Key team members ran a
-                        regulated lender for 7 years. We invest our own capital
-                        alongside Makers and earn interest.
-                        <br />
-                        <br />
-                        We also charge a fee to liquidity providers of each
-                        vault, agreed in advance, but only due on repayment.
-                        That fee ranges from 2-5% of the total interest charged
-                        i.e. 95% of the interest goes to Makers.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="dd last">
-                  <div className="dd-toggle">
-                    <div className="dd-col">
-                      <h5 className="h5 reg fq">
-                        How will community engagement be incentivised and
-                        rewarded?
-                      </h5>
-                    </div>
-                    <div className="dd-cross">
-                      <img
-                        src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f994a3b83f2dd634882bad_plus.svg"
-                        loading="lazy"
-                        alt=""
-                        className="plus"
-                      />
-                      <img
-                        src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f994b018d02fd97e75e16f_minus.svg"
-                        loading="lazy"
-                        alt=""
-                        className="minus"
-                      />
-                    </div>
-                  </div>
-                  <div className="dd-cont">
-                    <div className="dd-text-block">
-                      <div className="t28 _3">
-                        We don’t know yet, but we are genuine in our belief that
-                        this is a fundamental aspect of our vision. We want to
-                        hear from community members what they feel that should
-                        look like in terms of <strong>roles</strong> and
-                        rewards. <br />
-                        <br />
-                        We are very open. Whether that be direct financial
-                        reward, priority, discounted terms or community
-                        standing.
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="accordion">
+                <Accordion
+                  question="What happens if I don’t repay on time?"
+                  answer="Stuff happens! We want you to repay the loan on time, but if you can not or do not want to – we will not take your NFT immediately. We will extend your loan by an agreed time frame and we will return to you any surplus over what you owe and what the NFT sells for in auction (if that becomes necessary)."
+                />
+                <Accordion
+                  question="I’m interested in being a Maker, what is that exactly?"
+                  answer="A Maker is a liquidity provider. A lender. We create vaults for specific deals with clear terms. If you want to provide liquidity alongside us then register below and we will be in touch."
+                />
+                <Accordion
+                  question="How and when do MakerShaker earn?"
+                  answer="We are lenders at heart. Key team members ran a regulated lender for 7 years. We invest our own capital alongside Makers and earn interest. We also charge a fee to liquidity providers of each vault, agreed in advance, but only due on repayment. That fee ranges from 2-5% of the total interest charged i.e. 95% of the interest goes to Makers."
+                />
+                <Accordion
+                  question="How will community engagement be incentivised and rewarded?"
+                  answer="We don’t know yet, but we are genuine in our belief that this is a fundamental aspect of our vision. We want to hear from community members what they feel that should look like in terms of roles and rewards. We are very open. Whether that be direct financial reward, priority, discounted terms or community standing."
+                />
+
               </div>
             </div>
           </div>
-          <img
-            src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f9966e18d02f676875f947_faq_el1.svg"
-            loading="eager"
-            alt=""
-            className="faq-el _1"
-          />
-          <img
-            src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f9967c750abd486ed80fd3_faq_el2.svg"
-            loading="eager"
-            alt=""
-            className="faq-el _2"
-          />
-          <img
-            src="https://uploads-ssl.webflow.com/62f8f19040ed720b7c4501d2/62f99685e0ceede6d59ecfe6_faq_el3.svg"
-            loading="eager"
-            alt=""
-            className="faq-el _3"
-          />
         </div>
       </div>
     </div>
+
+
     <div className="section footer wf-section">
       <div className="container w-container">
         <div className="ft-row _1">
           <div className="ft-col">
             <a
-              href="index.html"
+              href="./"
               aria-current="page"
               className="ft-logo w-inline-block w--current"
             >
@@ -1156,25 +1047,10 @@ function App() {
     <div className="ck-text">
       We use cookies to personalize content, ads and analyze site traffic.
     </div>
-    <a href="index.html#" className="button cookie_accept w-button">
+    <a href="#" className="button cookie_accept w-button">
       Accept
     </a>
   </div>
-  {/*[if lte IE 9]><![endif]*/}
-  {/* Slick slider */}
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
-  />
-  {/* Cookie */}
-  <style
-    dangerouslySetInnerHTML={{
-      __html:
-        "\n      .show_block {\n        display: -webkit-box;\n        display: -webkit-flex;\n        display: -ms-flexbox;\n        display: flex;\n      }\n    "
-    }}
-  />
-  {/* FAQ */}
 </>
 
   )
